@@ -6,7 +6,9 @@ public class Task1 {
     public static void main(String[] args) {
         int numberN = userInputNumb();
         int factorialOfNumber = findingFactorialOfNumber(numberN);
+        int sumOfSum = findingSumOfNumber(numberN);
         System.out.printf("Факториал числа %d равен:\n%d! = %d.", numberN, numberN, factorialOfNumber);
+        System.out.printf("\nn-ое треугольное число %d равен: %d.", numberN, sumOfSum);
     }
 
     static int userInputNumb() {
@@ -30,6 +32,14 @@ public class Task1 {
             return 1;
         } else {
             return numberForFactorial * findingFactorialOfNumber(numberForFactorial - 1);
+        }
+    }
+
+    static int findingSumOfNumber(int numberForSum) {
+        if (numberForSum <= 1) {
+            return 1;
+        } else {
+            return numberForSum + findingSumOfNumber(numberForSum - 1);
         }
     }
 }
