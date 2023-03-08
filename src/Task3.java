@@ -10,19 +10,29 @@ public class Task3 {
         System.out.print("Число 2: ");
         double b = userInputNumb();
 
-        double result;
+        double result = 0;
+        String resultError = null;
 
-        if (arithmeticalOperation == 43) {
+        if (arithmeticalOperation == '+') {
             result = addition(a, b);
-        } else if (arithmeticalOperation == 45) {
+        } else if (arithmeticalOperation == '-') {
             result = subtraction(a, b);
-        } else if (arithmeticalOperation == 42) {
+        } else if (arithmeticalOperation == '*') {
             result = multiplication(a, b);
         } else {
-            result = division(a, b);
+            if (b == 0) {
+                resultError = "На нуль делить нельзя!";
+            } else {
+                result = division(a, b);
+            }
+            ;
         }
 
-        System.out.println(result);
+        if (arithmeticalOperation == '/' && b == 0) {
+            System.out.println(resultError);
+        } else {
+            System.out.println(result);
+        }
 
     }
 
@@ -40,8 +50,8 @@ public class Task3 {
     static char userInputArithmeticalOperation() {
         while (true) {
             Scanner sc = new Scanner(System.in);
-            char userOperation = sc.next().charAt(0);
-            if (userOperation == 43 || userOperation == 45 || userOperation == 42 || userOperation == 47) {
+            char userOperation = sc.nextLine().charAt(0);
+            if (userOperation == '+' || userOperation == '-' || userOperation == '*' || userOperation == '/') {
                 return userOperation;
             }
             System.out.println("Ошибка ввода! Попробуйте еще раз");
